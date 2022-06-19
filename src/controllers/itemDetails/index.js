@@ -1897,6 +1897,11 @@ export default function (view, params) {
     }
 
     function playItem(item, startPosition) {
+        if (window.localStorage['ENABLE_DIRECT_PLAY']) {
+            window.location.href = `directplay://${item.Path}`;
+            return;
+        }
+
         const playOptions = getPlayOptions(startPosition);
         playOptions.items = [item];
         playbackManager.play(playOptions);
