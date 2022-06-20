@@ -35,7 +35,7 @@ jobs:
       run: 7z a Jellyfin-web.7z ./dist/* -r
 
     - name: Upload artifact for deployment job
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: Jellyfin-web
         path: Jellyfin-web.7z
