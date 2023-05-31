@@ -931,6 +931,7 @@
     "PinCodeResetComplete": "简单PIN码已被重置。",
     "PinCodeResetConfirmation": "你确定要重置简单PIN码？",
     "Play": "播放",
+    "DirectPlay": "直接播放",
     "PlayAllFromHere": "从这里开始全部播放",
     "PlayCount": "播放次数",
     "PlayFromBeginning": "从头播放",

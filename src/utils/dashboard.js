@@ -44,6 +44,11 @@ export async function serverAddress() {
             return Promise.resolve();
         }
 
+        // inject ENV url
+        if (__CUSTOM_SERVER_URL__) {
+            url = __CUSTOM_SERVER_URL__
+        }
+
         urls.push(url);
     }
 

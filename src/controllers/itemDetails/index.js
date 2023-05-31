@@ -319,6 +319,7 @@ function reloadPlayButtons(page, item) {
         hideAll(page, 'btnInstantMix');
         hideAll(page, 'btnShuffle');
     } else if (playbackManager.canPlay(item)) {
+        if (window.localStorage['ENABLE_DIRECT_PLAY']) hideAll(page, 'btnDirectPlay', true);
         hideAll(page, 'btnPlay', true);
         const enableInstantMix = ['Audio', 'MusicAlbum', 'MusicGenre', 'MusicArtist'].indexOf(item.Type) !== -1;
         hideAll(page, 'btnInstantMix', enableInstantMix);
@@ -337,6 +338,7 @@ function reloadPlayButtons(page, item) {
             }
         }
     } else {
+        hideAll(page, 'btnDirectPlay');
         hideAll(page, 'btnPlay');
         hideAll(page, 'btnReplay');
         hideAll(page, 'btnInstantMix');
@@ -1895,6 +1897,12 @@ export default function (view, params) {
     function playCurrentItem(button, mode) {
         const item = currentItem;
 
+        // 直接播放
+        if (mode === 'direct') {
+            window.location.href = `directplay://${item.Path}`;
+            return;
+        }
+
         if (item.Type === 'Program') {
             const apiClient = ServerConnections.getApiClient(item.ServerId);
             apiClient.getLiveTvChannel(item.ChannelId, apiClient.getCurrentUserId()).then(function (channel) {
@@ -2009,6 +2017,7 @@ export default function (view, params) {
     function init() {
         const apiClient = getApiClient();
 
+        bindAll(view, '.btnDirectPlay', 'click', onPlayClick);
         bindAll(view, '.btnPlay', 'click', onPlayClick);
         bindAll(view, '.btnReplay', 'click', onPlayClick);
         bindAll(view, '.btnInstantMix', 'click', onInstantMixClick);

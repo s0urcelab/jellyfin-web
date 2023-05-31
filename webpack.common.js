@@ -46,7 +46,8 @@ const config = {
     },
     plugins: [
         new DefinePlugin({
-            __WEBPACK_SERVE__: JSON.stringify(!!process.env.WEBPACK_SERVE)
+            __WEBPACK_SERVE__: JSON.stringify(!!process.env.WEBPACK_SERVE),
+            __CUSTOM_SERVER_URL__: JSON.stringify(process.env.CUSTOM_SERVER_URL),
         }),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
