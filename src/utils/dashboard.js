@@ -21,6 +21,9 @@ export function getCurrentUser() {
 
 // TODO: investigate url prefix support for serverAddress function
 export async function serverAddress() {
+    // 直接返回环境变量中指定的服务端地址
+    return __CUSTOM_SERVER_URL__;
+
     const apiClient = window.ApiClient;
 
     if (apiClient) {

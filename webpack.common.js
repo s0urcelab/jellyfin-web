@@ -54,6 +54,7 @@ const config = {
     plugins: [
         new DefinePlugin({
             __COMMIT_SHA__: JSON.stringify(COMMIT_SHA),
+            __CUSTOM_SERVER_URL__: JSON.stringify(process.env.CUSTOM_SERVER_URL),
             __JF_BUILD_VERSION__: JSON.stringify(
                 process.env.WEBPACK_SERVE ?
                     'Dev Server' :
