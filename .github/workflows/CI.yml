@@ -5,9 +5,7 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ directplay ]
-  pull_request:
-    branches: [ directplay ]
+    branches: [ custom ]
 
 jobs:
   build:
@@ -16,7 +14,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.19.3]
+        node-version: [20.12.1]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
